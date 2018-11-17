@@ -1,0 +1,186 @@
+\documentclass{article}
+\usepackage[cm]{fullpage}
+\usepackage{color}
+\usepackage{hyperref}
+
+\hypersetup{breaklinks=true,%
+pagecolor=white,%
+colorlinks=true,%
+linkcolor=cyan,%
+urlcolor=MyDarkBlue}
+
+\definecolor{MyDarkBlue}{rgb}{0,0.0,0.45}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formatting parameters  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newlength{\tabin}
+\setlength{\tabin}{1em}
+\newlength{\secsep}
+\setlength{\secsep}{0.1cm}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0in}
+\setlength{\itemsep}{0in}
+\setlength{\topsep}{0in}
+\setlength{\tabcolsep}{0in}
+
+\definecolor{contactgray}{gray}{0.3}
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Template Definitions  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\lineunder}{\vspace*{-8pt} \\ \hspace*{-6pt} \hrulefill \\ \vspace*{-15pt}}
+\newcommand{\name}[1]{\begin{center}\textsc{\Huge#1}\\\end{center}}
+\newcommand{\program}[1]{\begin{center}\textsc{#1}\end{center}}
+\newcommand{\contact}[1]{\begin{center}\color{contactgray}{\small#1}\end{center}}
+\newcommand{\addcolor}[1]{\color{MyDarkBlue}}
+
+\newenvironment{tabbedsection}[1]{
+  \begin{list}{}{
+      \setlength{\itemsep}{0pt}
+      \setlength{\labelsep}{0pt}
+      \setlength{\labelwidth}{0pt}
+      \setlength{\leftmargin}{\tabin}
+      \setlength{\rightmargin}{\tabin}
+      \setlength{\listparindent}{0pt}
+      \setlength{\parsep}{0pt}
+      \setlength{\parskip}{0pt}
+      \setlength{\partopsep}{0pt}
+      \setlength{\topsep}{#1}
+    }
+  \item[]
+}{\end{list}}
+
+\newenvironment{nospacetabbing}{
+    \begin{tabbing}
+}{\end{tabbing}\vspace{-1.2em}}
+
+\newenvironment{resume_header}{}{\vspace{0pt}}
+
+
+\newenvironment{resume_section}[1]{
+  \filbreak
+  \vspace{2\secsep}
+  \textsc{\large#1}
+  \lineunder
+  \begin{tabbedsection}{\secsep}
+}{\end{tabbedsection}}
+
+\newenvironment{resume_subsection}[2][]{
+  \textbf{#2} \hfill {\footnotesize #1} \hspace{2em}
+  \begin{tabbedsection}{0.5\secsep}
+}{\end{tabbedsection}}
+
+\newenvironment{subitems}{
+  \renewcommand{\labelitemi}{-}
+  \begin{itemize}
+      \setlength{\labelsep}{1em}
+}{\end{itemize}}
+
+\newenvironment{resume_employer}[4]{
+  \vspace{\secsep}
+  \textbf{#1} \\
+  \indent {\small #2} \hfill {\footnotesize#3 (#4)}
+  \begin{tabbedsection}{0pt}
+  \begin{subitems}
+}{\end{subitems}\end{tabbedsection}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Start Document     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{resume_header}
+\name{Nathan Wu}
+\program{Bachelor of Commerce - Business and Computer Science Major}
+\contact{nwu1018@gmail.com \hspace{2cm} 604-000-0000 \hspace{2cm} www.nawu.me}
+\end{resume_header}
+
+\begin{resume_section}{About Me}
+  \begin{nospacetabbing}
+
+  \textbf{Technical Skills}  \= Java, R, Python, Excel, SQLite, Scheme, \LaTeX\ , RegEx\\*
+  \textbf{Languages} \>  Conversational Proficiency in Cantonese\\*
+  \textbf{Art Technology} \> Adobe Photoshop, Adobe Premiere Pro, Adobe Illustrator\\*
+  \textbf{Interests} \> Capital Markets, Web Development, Cinematography, Photography, Design, Cars\\*
+  \end{nospacetabbing}
+
+\end{resume_section}
+
+\begin{resume_section}{Personal Projects}
+
+\begin{resume_subsection}[(September 2018 - Present)]{Personal PasswordManager}
+  \begin{subitems}
+    \item Created a simple password manager written in Java
+    \item Gained a general understanding of database queries and design in SQLite
+    \item Developed a foundational knowledge of how encryption operates with proper hashing and storing of passwords
+    \end{subitems}
+  \end{resume_subsection}
+
+    \begin{resume_subsection}[(August 2018 - Present)]{Cryptrade}
+    \begin{subitems}
+        \item Developed a Cryptocurrency trading bot using R (statistical computing language)
+        \item Wrote an algorithm to trade Bitcoin/USD and Zichain/USD pairs using a combination of RSI indicators and Moving Average Crossovers
+        \item Acquired code organization skills by modularizing my programs and defining appropriate classes
+        \item Learned quantitative strategies and applied them during the creation of the algorithm
+    \end{subitems}
+  \end{resume_subsection}
+
+  \begin{resume_subsection}[(July 2018)]{BusesAreUs}
+     \begin{subitems}
+     	\item Programmed the application to parse XML files that hold route information from TransLink's API
+        \item Application's purpose is to help the user find their nearest bus stop with arrival times and bus routes
+        \item Android App written as a final project
+    \end{subitems}
+
+  \end{resume_subsection}
+
+
+\end{resume_section}
+
+\begin{resume_section}{Work and Volunteer Experience}
+  \begin{resume_employer}{Mosaic Sales Solutions}{Hewlett-Packard Specialist}{Vancouver, BC}{December 2016-February 2017}
+    \item Worked with the territorial manager in the launch of HP Instant Ink Program in Canada
+    \item Participated in the release and launch of the HP Sprocket at all Best Buy locations in the Lower Mainland
+    \item Performed a sales analysis report to determine progress of sales throughout the quarter
+  \end{resume_employer}
+
+  \begin{resume_employer}{Keith Wong \& Co. CPA}{Assistant}{Richmond, BC}{July 2017 - Present}
+    \item Provided assistance to CPAs through clerical and secretarial work
+    \item Compiled monthly reports and schedules that increased efficiency among the accountants
+    \item Applied Microsoft Word and Excel to draft and monitor data
+  \end{resume_employer}
+
+  \begin{resume_employer}{Case Competition Club}{Corporate Relations Director}{University of British Columbia}{September 2016 - September 2017}
+    \item Worked alongside external firms and partners to secure relationships for events
+    \item Generated sponsorships and developed appropriate sponsor packages
+    \item Pursued new partnerships and contributed to the overall club and competitions
+  \end{resume_employer}
+
+  \begin{resume_employer}{City Center Youth Development}{Student Mentor}{Richmond, BC}{October 2013 - June 2016}
+    \item Responsible for leading and overseeing programs and volunteers
+    \item Advocated and represented the program at monthly council meetings
+    \item Provided positive mentorship to youth and supervisors through one-on-one and group settings
+  \end{resume_employer}
+\end{resume_section}
+
+
+
+\begin{resume_section}{Education}
+  \begin{resume_subsection}[Vancouver, BC (2016 -- Present)]{University of British Columbia}
+    \begin{subitems}
+      \item Bachelor of Commerce (Business and Computer Science)
+      \item Cummulative Average: 80\%
+    \end{subitems}
+  \end{resume_subsection}
+
+
+\end{resume_section}
+
+\end{document}
